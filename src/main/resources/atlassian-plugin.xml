@@ -10,7 +10,35 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="myplugin"/>
 
-    <web-resource key="nps-survey-embeddable-pack">
-        <resource location="/client/npssurvey.pack.js" name="npssurvey.js" type="download"/>
+    <webwork1 key="exampleadminpage" name="Example Admin Page" class="java.lang.Object">
+        <actions>
+            <action name="de.mola.jira.spielwiese.webwork.ExampleAdminPage" alias="ExampleAdminPage">
+                <view name="example">/templates/example.vm</view>
+            </action>
+        </actions>
+    </webwork1>
+
+    <web-item key="uid1"
+              name="A New Action Link"
+              section="atl.jira.proj.config/projectgroup4"
+              weight="500">
+        <description>This is a link to a new Action</description>
+        <!-- The label for the link is defined in the i18n properties file -->
+        <label key="com.consultingtoolsmiths.jira.samples.webwork.label1"/>
+        <!-- The name of the jspa here is the alias of the action below.
+             The linkId is optional -->
+        <link linkId="com.consultingtoolsmiths.jira.samples.ww1">/secure/ExampleAdminPage!default.jspa</link>
+    </web-item>
+    <web-resource key="main-react" name="Main" >
+        <resource type="download" name="main.js" location="js/main.js" />
     </web-resource>
+    <web-resource key="main-react-loader" name="Main" >
+        <resource type="download" name="main.js" location="js/main-react-loader.js" />
+    </web-resource>
+    <web-resource key="img" name="Image" >
+        <resource type="download" name="a379dc57ea61169fadcb5e06fac03a74.png" location="js/a379dc57ea61169fadcb5e06fac03a74.png" />
+    </web-resource>
+<!--    <web-resource key="nps-survey-embeddable-pack">
+        <resource location="/client/npssurvey.pack.js" name="npssurvey.js" type="download"/>
+    </web-resource>-->
 </atlassian-plugin>
