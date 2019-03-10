@@ -306,6 +306,13 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.atlassian.fugue:fugue:4.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.atlassian.fugue:fugue-guava:4.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.atlassian.fugue:fugue-retry:4.5.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.atlassian.activeobjects:activeobjects-plugin:2.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.activeobjects:activeobjects:2.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.atlassian.activeobjects:activeobjects-core:2.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.atlassian.activeobjects:activeobjects-dbex:2.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.woodstox:stax2-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.atlassian.plugin:atlassian-spring-scanner-annotation:1.2.13" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.atlassian.plugin:atlassian-spring-scanner-runtime:1.2.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.10" level="project" />

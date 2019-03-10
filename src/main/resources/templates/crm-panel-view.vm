@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Helpdesk Verwaltung</title>
+    <meta name="decorator" content="atl.general" />
+
+    <meta name="jira.project.sidebar.plugins.navigation"
+          content="jira.project.sidebar.plugins.navigation/crm-view-link" />
+</head>
+<body id="jira" class="aui-layout aui-style-default">
+<section id="content">
+    <div class="aui-page-panel">
+        <div class="aui-page-panel-inner">
+            <section class="aui-page-panel-content">
+                <div id="app-root"></div>
+                <script>
+                    (function() {
+                        var mainresource = document.querySelector('script[data-wrm-key="de.mola.jira.spielwiese.myplugin:main-react"]');
+                        var script = document.createElement('script');
+                        script.src = mainresource.src;
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                        document.addEventListener('DOMContentLoaded', function (event) {
+                            window.loadedWPScriptAsync = true;
+                        });
+                    })();
+                </script>
+            </section>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

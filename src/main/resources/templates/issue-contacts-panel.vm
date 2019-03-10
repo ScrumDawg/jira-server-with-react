@@ -1,0 +1,15 @@
+<div id="issue-contact-panel-root"></div>
+
+<script>
+    (function() {
+        console.log("Reload React-App");
+        var mainresource = document.querySelector('script[data-wrm-key="issue-contact-panel,-_super');
+        console.log("Mainsource: " + mainresource);
+        var script = document.createElement('script');
+        script.src = mainresource.src;
+        document.getElementsByTagName('head')[0].appendChild(script);
+        document.addEventListener('DOMContentLoaded', function (event) {
+            window.loadedWPScriptAsync = true;
+        });
+    })();
+</script>

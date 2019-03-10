@@ -1,0 +1,19 @@
+[   {
+  "id": 1,
+  "name": "American International Group",
+  "email": "marketing@aigroup.com",
+  "telephone": "+49 167 5487312"
+},
+  {
+    "id": 2,
+    "name": "SAP SE",
+    "email": "business@sap.com",
+    "telephone": "1797-1801"
+  },
+  {
+    "id": 3,
+    "name": "Amazon.com",
+    "email": "cotact@amazon.com",
+    "telephone": "489 334 544878"
+  }
+]

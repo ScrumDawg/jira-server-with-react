@@ -10,6 +10,23 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="myplugin"/>
 
+
+<!--    <customfield-type key="contact" name="Contacts for Issues"
+                      i18n-name-key="admin.customfield.type.contact.name"
+                      class="com.atlassian.jira.issue.customfields.impl.RenderableTextCFType">
+        <description key="admin.customfield.type.textfield.desc">A basic single line text box custom field to allow simple text input.</description>
+
+        <resource type="download" name="customfieldpreview.png" location="/images/customfieldpreview/textfield.png">
+            <param name="source" value="webContextStatic"/>
+        </resource>
+
+        <resource type="velocity" name="view" location="templates/plugins/fields/view/view-basictext.vm"/>
+        <resource type="velocity" name="edit" location="templates/plugins/fields/edit/edit-maxlengthtext.vm"/>
+        <resource type="velocity" name="xml" location="templates/plugins/fields/xml/xml-basictext.vm"/>
+
+        <category>STANDARD</category>
+    </customfield-type>-->
+
     <webwork1 key="exampleadminpage" name="Example Admin Page" class="java.lang.Object">
         <actions>
             <action name="de.mola.jira.spielwiese.webwork.ExampleAdminPage" alias="ExampleAdminPage">
@@ -18,6 +35,34 @@
         </actions>
     </webwork1>
 
+    <web-item key="crm-view-link" section="jira.project.sidebar.plugins.navigation"
+              weight="0">
+        <label>CRM</label>
+        <link linkId="crm">/projects/$pathEncodedProjectKey?selectedItem=com.atlassian.jira.jira-projects-plugin:crm-panel
+        </link>
+        <param name="iconClass" value="aui-icon aui-icon-small aui-iconfont-user-status" />
+    </web-item>
+
+    <ao key="ao-module">
+        <description>The module configuring the Active Objects service used by this plugin</description>
+        <entity>de.mola.jira.spielwiese.model.entity.IContactToCompany</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.IssueContact</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.IContactToPerson</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Company</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Address</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Person</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Website</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Telephone</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.EMailAddress</entity>
+    </ao>
+
+    <web-panel key="crm-panel"
+               location="com.atlassian.jira.jira-projects-plugin:crm-panel">
+        <resource type="velocity" name="view"
+                  location="templates/crm-panel-view.vm" />
+        <context-provider
+                class="de.mola.jira.spielwiese.contextprovider.CRMPanelContextProvider" />
+    </web-panel>
     <web-item key="uid1"
               name="A New Action Link"
               section="atl.jira.proj.config/projectgroup4"
@@ -31,6 +76,7 @@
     </web-item>
     <web-resource key="main-react" name="Main" >
         <resource type="download" name="main.js" location="js/main.js" />
+        <context>issue-contact-panel</context>
     </web-resource>
     <web-resource key="main-react-loader" name="Main" >
         <resource type="download" name="main.js" location="js/main-react-loader.js" />
@@ -38,6 +84,17 @@
     <web-resource key="img" name="Image" >
         <resource type="download" name="a379dc57ea61169fadcb5e06fac03a74.png" location="js/a379dc57ea61169fadcb5e06fac03a74.png" />
     </web-resource>
+
+    <web-panel name="Contacts" i18n-name-key="contacts.issue-panel.title" key="issue-contacts-panel" location="atl.jira.view.issue.right.context" weight="1000">
+        <description key="due-date-indicator.description">The DueDateIndicator Plugin</description>
+        <context-provider class="de.mola.jira.spielwiese.webpanel.IssueContactPanel"/>
+        <resource name="view" type="velocity" location="templates/issue-contacts-panel.vm"/>
+        <label key="contacts.issue-panel.title"/>
+
+    </web-panel>
+    <rest key="mypluginRest" path="/myplugin" version="1.0">
+        <description>REST-Schnittstelle des Plugins.</description>
+    </rest>
 <!--    <web-resource key="nps-survey-embeddable-pack">
         <resource location="/client/npssurvey.pack.js" name="npssurvey.js" type="download"/>
     </web-resource>-->
