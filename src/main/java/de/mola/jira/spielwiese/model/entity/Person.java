@@ -5,7 +5,7 @@ import net.java.ao.ManyToMany;
 import net.java.ao.OneToMany;
 import net.java.ao.schema.Table;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Table("Person")
 public interface Person extends Entity {
@@ -16,8 +16,8 @@ public interface Person extends Entity {
     String getLastname();
     void setLastname(String lastname);
 
-    LocalDate getBirthdate();
-    void setBirthdate(LocalDate birthdate);
+    Date getBirthdate();
+    void setBirthdate(Date birthdate);
 
     String getPosition();
     void setPosition(String position);

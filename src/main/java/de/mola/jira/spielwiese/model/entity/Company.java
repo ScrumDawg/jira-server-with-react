@@ -12,7 +12,7 @@ public interface Company extends Entity {
     void setName(String name);
 
     String getIndustry();
-    void setIndustry();
+    void setIndustry(String industry);
 
     @OneToMany(reverse = "getCompany")
     Address[] getAddresses();

@@ -18,9 +18,9 @@ class IssueContactPanel extends Component{
     }
 
     componentDidMount() {
-        fetch(API + DEFAULT_QUERY)
+        /*fetch(API + DEFAULT_QUERY)
             .then(response => response.json())
-            .then(data => this.setState({ hits: data.hits }));
+            .then(data => this.setState({ hits: data.hits }));*/
     }
 
     render(){

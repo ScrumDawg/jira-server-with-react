@@ -11,7 +11,7 @@ public interface IssueContact extends Entity {
     Long getIssueId();
     void setIssueId(Long issueId);
 
-    @ManyToMany(value = IContactToCompany.class)
+    @ManyToMany(value = IContactToCompany.class )
     Company[] getCompanies();
 
     @ManyToMany(value = IContactToPerson.class)
