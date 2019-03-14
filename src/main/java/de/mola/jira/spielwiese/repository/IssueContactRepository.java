@@ -23,28 +23,21 @@ public class IssueContactRepository {
     }
 
     public Optional<IssueContact> finById(Integer id){
-        Query q = Query.select().where("ID = %i", id);
-        AtomicReference<IssueContact> byId = new AtomicReference<>();
-
-        ao.stream(IssueContact.class, q, issueContact -> {
-            if(id.equals(issueContact.getID()))
-                byId.set(issueContact);
-        });
-
-        return Optional.ofNullable(byId.get());
+        Query q = Query.select().where("ID = %s", String.valueOf(id));
+        return Optional.ofNullable(ao.find(IssueContact.class, q)[0]);
     }
 
+
+
     public Optional<IssueContact> findByIssueId(Long issueId){
+        IssueContact issueContact = null;
         Query q = Query.select().where("ISSUE_ID = ?",issueId);
-        IssueContact[] issueContacts = ao.find(IssueContact.class, q);
-        AtomicReference<IssueContact> byIssueId = new AtomicReference<>();
+        IssueContact[] found = ao.find(IssueContact.class, q);
 
-        ao.stream(IssueContact.class, q, issueContact -> {
-            if(issueId.equals(issueContact.getIssueId()))
-                byIssueId.set(issueContact);
-        });
+        if(found.length > 0)
+            issueContact = found[0];
 
-        return Optional.ofNullable(byIssueId.get());
+        return Optional.ofNullable(issueContact);
     }
 
     public void createTestData(Long issueId){
