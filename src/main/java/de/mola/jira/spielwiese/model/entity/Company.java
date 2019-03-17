@@ -6,7 +6,7 @@ import net.java.ao.OneToMany;
 import net.java.ao.schema.Table;
 
 @Table("Company")
-public interface Company extends Entity {
+public interface Company extends Contact {
 
     String getName();
     void setName(String name);
@@ -14,18 +14,6 @@ public interface Company extends Entity {
     String getIndustry();
     void setIndustry(String industry);
 
-    @OneToMany(reverse = "getCompany")
-    Address[] getAddresses();
-
-    @OneToMany(reverse = "getCompany")
-    EMailAddress[] getEMailAddresses();
-
-    @OneToMany(reverse = "getCompany")
-    Telephone[] getTelephones();
-
-    @OneToMany(reverse = "getCompany")
-    Website[] getWebsites();
-
-    @ManyToMany(value = IContactToCompany.class)
-    IssueContact[] getIssueContacts();
+    @ManyToMany(value = IssueToContact.class)
+    JiraIssue[] getJiraIssues();
 }

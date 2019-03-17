@@ -8,7 +8,7 @@ import net.java.ao.schema.Table;
 import java.util.Date;
 
 @Table("Person")
-public interface Person extends Entity {
+public interface Person extends Contact {
 
     String getFirstname();
     void setFirstname(String firstname);
@@ -22,18 +22,5 @@ public interface Person extends Entity {
     String getPosition();
     void setPosition(String position);
 
-    @OneToMany(reverse = "getPerson")
-    Address[] getAddresses();
 
-    @OneToMany(reverse = "getPerson")
-    EMailAddress[] getEMailAddresses();
-
-    @OneToMany(reverse = "getPerson")
-    Telephone[] getTelephones();
-
-    @OneToMany(reverse = "getPerson")
-    Website[] getWebsites();
-
-    @ManyToMany(value = IContactToPerson.class)
-    IssueContact[] getIssueContacts();
 }

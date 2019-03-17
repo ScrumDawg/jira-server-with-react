@@ -3,16 +3,31 @@ import styled from 'styled-components';
 import DynamicTable from '@atlaskit/dynamic-table';
 import Page, { Grid, GridColumn } from '@atlaskit/page';
 import { caption, head, rowsPerson, rowsCompany } from './sample-data/sample-data';
+import Button from '@atlaskit/button';
+
 import { Fetch } from 'react-data-fetching';
 
-
+import AddIssueContactDialog from './../../AddIssueContactDialog/AddIssueContactDialog'
 
 class IssueContactPanel extends Component{
+
+    state = {
+        isOpen: false,
+        contacts: [],
+    };
+
+    open = () => this.setState({ isOpen: true });
+    close = () => this.setState({ isOpen: false });
+    onFormSubmit = (data) => {
+        console.log(JSON.stringify(data));
+        close();
+    }
 
     constructor(props){
         super(props);
 
         this.state = {
+            isOpen: false,
             contacts: [],
         };
     }
@@ -56,8 +71,16 @@ class IssueContactPanel extends Component{
                             onSort={() => console.log('onSort')}
                             onSetPage={() => console.log('onSetPage')}
                         />
+
+                        <Button onClick={this.open}>Open Modal</Button>
                     </GridColumn>
                 </Grid>
+                {this.state.isOpen && (
+                    <AddIssueContactDialog
+                        close={this.close}
+                        onFormSubmit={this.onFormSubmit}
+                    />
+                )}
             </Page>
         );
     }

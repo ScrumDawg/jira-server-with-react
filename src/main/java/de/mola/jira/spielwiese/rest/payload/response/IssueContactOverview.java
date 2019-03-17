@@ -24,7 +24,7 @@ public class IssueContactOverview {
     private String name;
 
     @XmlElementWrapper
-    @XmlElement(name="email")
+    @XmlElement(name="emails")
     private List<String> email;
 
     @XmlElement

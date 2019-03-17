@@ -26,8 +26,11 @@
   ],
   "devDependencies": {
     "@atlaskit/avatar": "^15.0.0",
+    "@atlaskit/checkbox": "^6.0.1",
     "@atlaskit/dropdown-menu": "^7.0.0",
     "@atlaskit/dynamic-table": "^11.0.0",
+    "@atlaskit/field-radio-group": "^5.0.1",
+    "@atlaskit/modal-dialog": "^8.0.2",
     "@atlaskit/page": "^9.0.0",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",

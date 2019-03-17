@@ -12,9 +12,6 @@ public interface EMailAddress extends Entity {
     String getEMailAddress();
     void setEMailAddress(String eMailAddress);
 
-    Person getPerson();
-    void setPerson(Person person);
-
-    Company getCompany();
-    void setCompany(Company company);
+    Contact getContact();
+    void setContact(Contact contact);
 }

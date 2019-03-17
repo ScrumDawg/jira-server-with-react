@@ -1,11 +1,10 @@
 package de.mola.jira.spielwiese.service;
 
-import com.atlassian.activeobjects.external.ActiveObjects;
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import de.mola.jira.spielwiese.model.entity.Company;
-import de.mola.jira.spielwiese.model.entity.IssueContact;
+import de.mola.jira.spielwiese.model.entity.Contact;
+import de.mola.jira.spielwiese.model.entity.JiraIssue;
 import de.mola.jira.spielwiese.model.entity.Person;
-import de.mola.jira.spielwiese.repository.IssueContactRepository;
+import de.mola.jira.spielwiese.repository.JiraIssueRepository;
 import de.mola.jira.spielwiese.rest.payload.response.IssueContactOverview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,34 +18,38 @@ import java.util.stream.Collectors;
 @Service
 public class IssueContactService {
 
-    private final IssueContactRepository issueContactRepository;
+    private final JiraIssueRepository jiraIssueRepository;
 
     @Autowired
-    public IssueContactService(IssueContactRepository issueContactRepository) {
-        this.issueContactRepository = issueContactRepository;
+    public IssueContactService(JiraIssueRepository jiraIssueRepository) {
+        this.jiraIssueRepository = jiraIssueRepository;
     }
 
     public void createTestDataForIssue(Long issueId){
-        issueContactRepository.createTestData(issueId);
+        jiraIssueRepository.createTestData(issueId);
     }
 
     public  List<IssueContactOverview> getContactsForIssue(Long issueId){
-        Optional<IssueContact> byIssueId = issueContactRepository.findByIssueId(issueId);
+        Optional<JiraIssue> byIssueId = jiraIssueRepository.findByIssueId(issueId);
         if(!byIssueId.isPresent())
             return new ArrayList<>();
 
-        IssueContact issueContact = byIssueId.get();
-        List<Company> companies = Arrays.asList(issueContact.getCompanies());
-        List<Person> persons = Arrays.asList(issueContact.getPersons());
-        List<IssueContactOverview> issueContactOverviews = companies.stream()
-                .map(this::convertCompanyToIssueContactOverview)
+        JiraIssue jiraIssue = byIssueId.get();
+        List<Contact> contacts = Arrays.asList(jiraIssue.getContacts());
+        List<IssueContactOverview> issueContactOverviews = contacts.stream()
+                .map(this::convertContactToIssueContactOverview)
                 .collect(Collectors.toList());
-
-        persons.stream()
-                .map(this::convertPersonToIssueContactOverview)
-                .collect(Collectors.toCollection(() -> issueContactOverviews));
-
         return issueContactOverviews;
+    }
+
+    private IssueContactOverview convertContactToIssueContactOverview(Contact contact){
+
+        if(contact instanceof Company)
+            return convertCompanyToIssueContactOverview((Company) contact);
+        if(contact instanceof Person)
+            return convertPersonToIssueContactOverview((Person) contact);
+
+        return null;
     }
 
     private IssueContactOverview convertCompanyToIssueContactOverview(Company company){

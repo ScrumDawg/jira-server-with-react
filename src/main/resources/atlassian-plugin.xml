@@ -45,15 +45,15 @@
 
     <ao key="ao-module">
         <description>The module configuring the Active Objects service used by this plugin</description>
-        <entity>de.mola.jira.spielwiese.model.entity.IContactToCompany</entity>
-        <entity>de.mola.jira.spielwiese.model.entity.IssueContact</entity>
-        <entity>de.mola.jira.spielwiese.model.entity.IContactToPerson</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.JiraIssue</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.Contact</entity>
         <entity>de.mola.jira.spielwiese.model.entity.Company</entity>
         <entity>de.mola.jira.spielwiese.model.entity.Address</entity>
         <entity>de.mola.jira.spielwiese.model.entity.Person</entity>
         <entity>de.mola.jira.spielwiese.model.entity.Website</entity>
         <entity>de.mola.jira.spielwiese.model.entity.Telephone</entity>
         <entity>de.mola.jira.spielwiese.model.entity.EMailAddress</entity>
+        <entity>de.mola.jira.spielwiese.model.entity.IssueToContact</entity>
     </ao>
 
     <web-panel key="crm-panel"

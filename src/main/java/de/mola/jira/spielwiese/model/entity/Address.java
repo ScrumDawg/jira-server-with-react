@@ -28,9 +28,6 @@ public interface Address extends Entity {
     String getCountry();
     void setCountry(String country);
 
-    Person getPerson();
-    void setPerson(Person person);
-
-    Company getCompany();
-    void setCompany(Company company);
+    Contact getContact();
+    void setContact(Contact contact);
 }
